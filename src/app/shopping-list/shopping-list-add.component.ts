@@ -22,10 +22,12 @@ export class ShoppingListAddComponent implements OnChanges {
   }
 
   onSubmit(ingredient: Ingredient){
+    const newIngredient = new Ingredient(ingredient.name, ingredient.amount);
     if (!this.isAdd){
       // Edit
+      this.sls.editItem(this.item, newIngredient);
     } else {
-      this.item = new Ingredient(ingredient.name, ingredient.amount);
+      this.item = newIngredient;
       this.sls.addItem(this.item);
     }
   }
